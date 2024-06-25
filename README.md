@@ -1,36 +1,56 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# RealStateApp
 
-# Getting Started
+>RealStateApp is a mobile application built with React Native that allows users to browse a list of houses and view details about each house. It features a login flow for authentication and provides location-based functionality to unlock detailed information about houses when the user is near them.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### Features
+- Authentication: User login flow using Firebase Authentication.
+- House List: Browse a list of houses available for viewing.
+- House Detail: View detailed information about each house.
+- Location-based Unlock: Unlock additional house details if the user is near the location.
 
-## Step 1: Start the Metro Server
+## Installation
+Follow these steps to run RealstateApp on your local machine:
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-yarn start
+1. Clone the repository:
 ```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your  _iOS_ app:
- 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+https://github.com/rajnish05/RealStateApp.git
+cd RealStateApp
 ```
+2. Install dependencies:
+```
+npm install
+# or
+yarn
+```
+3. Install Pod dependencies
+```
+cd ios/
+pod install
+cd ../
+```
+4. Run the application:
+```
+npx react-native run-ios
+```
+* Follow the instructions in the console to run the app on iOS emulator/device.
 
-If everything is set up _correctly_, you should see your new app running in your  _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Usage
 
-This is one way to run your app — you can also run it directly from Xcode.
- 
- 
- 
+1. Login:
+   * Upon launching the app, users are prompted to log in using their credentials.
+   * If new, users can sign up to create an account.
+
+2. House List:
+   * After logging in, users can see a list of available houses.
+   * Clicking on a house navigates to the house detail screen.
+
+3. House Detail:
+   * View detailed information about the selected house.
+   * if the user's current locationis within 30m of the home, an unlock button appears to reveal additional details.
+
+ ## Technologies Used
+  * React Native
+  * Firebase (Authentication, Firestore)
+  * React Navigation
+  * Geolocation
   
