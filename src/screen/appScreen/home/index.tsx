@@ -7,12 +7,11 @@ import * as RootNavigation from '../../../navigation/RootNavigation'
 import { ScreenNames } from '../../../utils/ScreenNames';
 import { useDataContext } from '../../../context/DataProvider';
 
-
 const HomeScreen: React.FC = () => {
     const { data } = useDataContext() || {}
 
     const handleOnPressHome = (item: Home) => {
-        RootNavigation.navigate(ScreenNames.DetailScreen, { home: item })
+        RootNavigation.navigate(ScreenNames.DetailScreen, { homeData: item })
     }
 
     return (
@@ -33,6 +32,5 @@ const HomeScreen: React.FC = () => {
         </View>
     );
 };
-
 
 export default HomeScreen;

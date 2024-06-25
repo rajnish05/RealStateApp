@@ -14,11 +14,11 @@ export const styles = StyleSheet.create({
       borderRadius: 10,
       overflow: 'hidden',
       marginBottom: 20,
-      elevation: 3, // Adds shadow for Android
-      shadowColor: '#000', // Adds shadow for iOS
-      shadowOffset: { width: 0, height: 2 }, // Adds shadow for iOS
-      shadowOpacity: 0.1, // Adds shadow for iOS
-      shadowRadius: 10, // Adds shadow for iOS
+      elevation: 3, 
+      shadowColor: '#000',  
+      shadowOffset: { width: 0, height: 2 }, 
+      shadowOpacity: 0.1, 
+      shadowRadius: 10, 
     },
     image: {
       width: '100%',
