@@ -34,6 +34,8 @@ export interface HomeDetailScreenProps {
                 breadcrumbs: { index: number; slug: string; title: string; type: string; }[];
                 image: string;
                 unlocked?: boolean;
+                lat?:number
+                long:number
             }
 
         };

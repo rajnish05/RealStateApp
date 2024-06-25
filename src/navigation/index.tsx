@@ -5,32 +5,12 @@ import AuthStack from './AuthStack';
 import AppStack from './Appstack';
 import auth from '@react-native-firebase/auth';
 import { DataProvider } from '../context/DataProvider';
-// import { initializeApp } from '@react-native-firebase/app';
-
-
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyBmT2EFgfcGn6Xf8HQOdXJSz7PwswWzUtA',
-//   projectId: 'realstateapp-3df52',
-//   storageBucket: 'realstateapp-3df52.appspot.com',
-//   messagingSenderId: '783531296184',
-//   appId: '1:783531296184:ios:dd65b908f62e689c913b4d',
-//  };
-
 
 
 const NavigationStructue = () => {
 
-  // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
-
-
-  // useEffect(() => {
-  //   // Check if Firebase app is already initialized
-  //   if (!initializeApp.length) {
-  //     initializeApp(firebaseConfig);
-  //   }
-  // }, []);
 
   // Handle user state changes
   function onAuthStateChanged(user: any) {
@@ -45,7 +25,7 @@ const NavigationStructue = () => {
   return (
     <DataProvider>
       <NavigationContainer ref={navigationRef}>
-        {Boolean(!user) ? <AppStack /> : <AuthStack />}
+        {Boolean(user) ? <AppStack /> : <AuthStack />}
       </NavigationContainer>
     </DataProvider>
   );

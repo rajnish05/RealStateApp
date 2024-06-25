@@ -10,10 +10,10 @@ import auth from '@react-native-firebase/auth';
 // Function to attempt signing in with email and password
 export const signInWithEmailAndPassword = async (email: string, password: string) => {
   try {
-    const userCredential = await auth().signInWithEmailAndPassword('joe.bloggs@example.com', '123456');
+    const userCredential = await auth().signInWithEmailAndPassword(email, password);
     return userCredential.user;
   } catch (error: any) {
-    if (error.code === 'auth/user-not-found') {
+    if (["auth/user-not-found", "auth/invalid-credential"].includes(error.code)) {
       return registerUser(email, password)
     } else if (error.code === 'auth/wrong-password') {
       throw new Error('Incorrect password');
@@ -32,3 +32,20 @@ const registerUser = async (email: string, password: string) => {
     throw error;
   }
 };
+
+export const logOutuser = async () => {
+  try {
+    await auth().signOut();
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const currentUser = () => {
+  try {
+    return auth().currentUser;
+  } catch (error) {
+    throw error;
+  }
+}
+

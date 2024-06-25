@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { signInWithEmailAndPassword } from '../../services/AuthService';
 
@@ -9,10 +9,9 @@ const LoginScreen = ({ }) => {
 
     const handleLogin = async () => {
         try {
-       let user = await signInWithEmailAndPassword(email,password)
-        console.log("🚀 ~ handleLogin ~ user:", user)
+            await signInWithEmailAndPassword(email, password)
         } catch (error) {
-          console.error('Login failed. Error:>>>>>', error);
+            console.error('Login failed. Error:>>>>>', error);
         }
     };
 

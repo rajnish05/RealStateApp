@@ -36,4 +36,36 @@ export const styles = StyleSheet.create({
       marginTop: 5,
       color: '#777',
     },
+    headerContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: 8,
+      // backgroundColor: '#6200EE',
+      borderBottomWidth: 1,
+      borderBottomColor: '#ddd',
+    },
+    headerText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    logoutButton: {
+      flexDirection:'row',
+      justifyContent:'center',
+      alignItems:'center'
+      
+    },
+    logoutIcon: {
+      height:20,
+      width:20,
+      tintColor: '#F72585',
+    },
+    profileFilled : {
+      height:20,
+      width:20
+    },
+    profileContainer:{
+      paddingHorizontal:10,
+      alignItems:'center'
+    },
   });
