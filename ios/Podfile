@@ -16,6 +16,9 @@ end
 
 target 'RealStateApp' do
   config = use_native_modules!
+  use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
+  pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -26,6 +29,7 @@ target 'RealStateApp' do
   target 'RealStateAppTests' do
     inherit! :complete
     # Pods for testing
+
   end
 
   post_install do |installer|
