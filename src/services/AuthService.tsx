@@ -1,13 +1,12 @@
 import auth from '@react-native-firebase/auth';
 
 /** 
- *  @author Rajnish kumar
- * @param email provided email by user
- * @param password user passowrd for login or signup
- * @returns user Details
+ * @author Rajnish kumar
+ * @param email (string): The email address of the user trying to sign in.
+ * @param password (string): The password associated with the user's email address.
+ * @returns A promise that resolves to a Firebase User object upon successful sign-in.
+ *  Throws an error with specific error messages for certain error conditions.
  */
-
-// Function to attempt signing in with email and password
 export const signInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     const userCredential = await auth().signInWithEmailAndPassword(email, password);
@@ -23,7 +22,12 @@ export const signInWithEmailAndPassword = async (email: string, password: string
   }
 };
 
-
+/** 
+ * @param email (string): The email address of the user trying to sign in.
+ * @param password (string): The password associated with the user's email address.
+ * @returns A promise that resolves to a Firebase User object upon successful sign-up.
+ *  Throws an error with specific error messages for certain error conditions.
+ */
 const registerUser = async (email: string, password: string) => {
   try {
     const userCredential = await auth().createUserWithEmailAndPassword(email, password);
@@ -33,6 +37,11 @@ const registerUser = async (email: string, password: string) => {
   }
 };
 
+/** 
+ * @author Rajnish Kumar
+ * @returns A promise that resolves when the user is successfully logged out.
+ * Throws an error if there is an issue during the logout process.
+ */
 export const logOutuser = async () => {
   try {
     await auth().signOut();
@@ -41,6 +50,10 @@ export const logOutuser = async () => {
   }
 }
 
+/** 
+ * @author Rajnish Kumar
+ * @returns The currently authenticated user object (User | null), which represents the current user session.
+ */
 export const currentUser = () => {
   try {
     return auth().currentUser;

@@ -12,9 +12,7 @@ const AppStack = () => {
     return (
         <Stack.Navigator
             initialRouteName={ScreenNames.HomeScreen}
-                // mode="card"
-                cardStyle={{ backgroundColor: 'transparent' }}
-            // headerMode="screen"
+            cardStyle={{ backgroundColor: 'transparent' }}
             tintColor='#ffffff'
             screenOptions={{
                 headerShown: false,

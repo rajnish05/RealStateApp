@@ -6,8 +6,9 @@ interface DataContextProps {
 }
 
 const DataContext = createContext<DataContextProps | undefined>(undefined);
-
-// Custom hook to use DataContext
+/**  
+ * @returns the current context value (context) obtained from useContext(DataContext).
+ * */
 export const useDataContext = () => {
   const context = useContext(DataContext);
   if (!context) {
