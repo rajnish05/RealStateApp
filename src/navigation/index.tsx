@@ -4,6 +4,7 @@ import { navigationRef } from './RootNavigation';
 import AuthStack from './AuthStack';
 import AppStack from './Appstack';
 import auth from '@react-native-firebase/auth';
+import { DataProvider } from '../context/DataProvider';
 // import { initializeApp } from '@react-native-firebase/app';
 
 
@@ -33,19 +34,20 @@ const NavigationStructue = () => {
 
   // Handle user state changes
   function onAuthStateChanged(user: any) {
-    console.log("🚀 ~ onAuthStateChanged ~ user:", user)
     setUser(user);
     if (initializing) setInitializing(false);
   }
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
+    return subscriber;  
   }, []);
 
   return (
-    <NavigationContainer ref={navigationRef}>
-      {Boolean(!user) ? <AppStack /> : <AuthStack />}
-    </NavigationContainer>
+    <DataProvider>
+      <NavigationContainer ref={navigationRef}>
+        {Boolean(!user) ? <AppStack /> : <AuthStack />}
+      </NavigationContainer>
+    </DataProvider>
   );
 }
 

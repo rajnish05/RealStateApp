@@ -18,7 +18,6 @@ const AppStack = () => {
             tintColor='#ffffff'
             screenOptions={{
                 headerShown: false,
-                gestureDirection: 'horizontal',
                 ...TransitionPresets.SlideFromRightIOS,
             }}
         >
@@ -27,7 +26,6 @@ const AppStack = () => {
                 component={HomeScreen}
                 options={{
                     gestureEnabled: false,
-                    swipeEnabled: false
                 }}
             />
             <Stack.Screen
@@ -35,7 +33,6 @@ const AppStack = () => {
                 component={DetailScreen}
                 options={{
                     gestureEnabled: false,
-                    swipeEnabled: false
                 }}
             />
 

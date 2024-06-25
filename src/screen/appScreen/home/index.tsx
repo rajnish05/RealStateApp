@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import HomeCard from './HomeCard';
-import { Homes, Home } from '../../../utils/Home';
+import { Home } from '../../../utils/Home';
 import { styles } from './styles'
 import * as RootNavigation from '../../../navigation/RootNavigation'
 import { ScreenNames } from '../../../utils/ScreenNames';
+import { useDataContext } from '../../../context/DataProvider';
 
 
 const HomeScreen: React.FC = () => {
-
+    const { data } = useDataContext() || {}
 
     const handleOnPressHome = (item: Home) => {
-        RootNavigation.navigate(ScreenNames.DetailScreen,{home:item})
+        RootNavigation.navigate(ScreenNames.DetailScreen, { home: item })
     }
 
     return (
         <View style={styles.container}>
             <FlatList
-                data={Homes}
+                data={data}
                 keyExtractor={(item: Home) => item.id.toString()}
                 renderItem={({ item }) => (
                     <HomeCard
