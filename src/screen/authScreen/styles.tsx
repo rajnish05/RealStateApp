@@ -15,19 +15,10 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         color: '#333333',
     },
-    input: {
-        width: '100%',
-        height: 50,
-        backgroundColor: '#F2F2F2',
-        paddingHorizontal: 15,
-        marginBottom: 15,
-        borderRadius: 10,
-        fontSize: 16,
-    },
     loginButton: {
         width: '100%',
         height: 50,
-        backgroundColor: '#007BFF',
+        backgroundColor: '#000',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
@@ -45,7 +36,9 @@ const styles = StyleSheet.create({
         color: '#007BFF',
         fontSize: 16,
         textDecorationLine: 'underline',
-    }
+    },
+    opacity05:{ opacity: 0.5 }
+   
 });
 
 export default styles
