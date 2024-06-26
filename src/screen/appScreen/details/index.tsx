@@ -7,34 +7,46 @@ import Header from './Header';
 import ImageDisplay from './ImageDisplay';
 import Details from './Details';
 import Breadcrumbs from './Breadcrumbs';
-import { HomeDetailScreenProps } from './interface';
+import { HomeDetailScreenProps, locationProps } from './interface';
 import UnlockButton from './UnlockButton';
 import useLocation from '../../../customHooks/useLocation';
+import { useDataContext } from '../../../context/DataProvider';
+import { Home } from '../../../utils/Home';
+import Description from './Description';
 
 const HomeDetailScreen: React.FC<HomeDetailScreenProps> = ({ route }) => {
 
     const { homeData } = route.params
-    const { address, description, width, height, views, breadcrumbs, image, unlocked, lat, long } = homeData || {}
-
-    const [userLocation, setUserLocation] = useState<{ latitude: number; longitude: number } | null>(null);
+    const { id, address, description, width, height, views, breadcrumbs, image, lat, long } = homeData || {}
     const [isWithinRange, setIsWithinRange] = useState(false);
-    const location = useLocation();
-    console.log("🚀 ~ location:", location)
+    const location: locationProps = useLocation();
+    const { data, setData, homeDetail } = useDataContext() || {}
+
+    const isUnlocked = React.useMemo(() => {
+        return data?.find(obj => obj.id === id)?.unlocked;
+    }, [data])
 
     React.useEffect(() => {
-        // const distance = haversine(
-        //     { latitude, longitude },
-        //     { latitude: lat, longitude: long },
-        //     { unit: 'meter' }
-        // );
+        const { latitude, longitude } = location
+        const distance = haversine(
+            { latitude, longitude },
+            { latitude: lat, longitude: long },
+            { unit: 'meter' }
+        );
 
-        // setIsWithinRange(distance <= 30);
-    }, [lat, long,location])
+        setIsWithinRange(distance <= 30);
+    }, [lat, long, location])
 
-    const handleUnlock = () => {
-        Alert.alert("Unlocked", "You have unlocked the home!");
+    const handleUnlock = async () => {
+        setData((_data: Home[]) => {
+            return _data?.map((_home: Home) => {
+                return {
+                    ..._home,
+                    unlocked: _home.id === id
+                }
+            })
+        })
     };
-
 
     if (Boolean(!homeData)) {
         return (
@@ -50,7 +62,8 @@ const HomeDetailScreen: React.FC<HomeDetailScreenProps> = ({ route }) => {
             <ImageDisplay imageUrl={image} />
             <Details description={description} width={width} height={height} views={views} />
             <Breadcrumbs breadcrumbs={breadcrumbs} />
-            <UnlockButton unlocked={unlocked} onPress={() => { }} />
+            <UnlockButton showUnlock={isWithinRange} unlocked={isUnlocked} onPress={handleUnlock} />
+            <Description home={homeDetail} unlocked={Boolean(isUnlocked)} />
         </ScrollView>
     );
 };

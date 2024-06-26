@@ -10,12 +10,14 @@ export interface Home {
   address: string;
   image: string;
   description: string;
-  alt_description?:string | undefined | null
-  breadcrumbs?:breadcrumbs[]
-  height?:number
-  unlocked:boolean
-  views:number
-  width:number
+  alt_description?:string | undefined | null;
+  breadcrumbs?:breadcrumbs[];
+  height?:number;
+  unlocked:boolean;
+  views:number;
+  width:number;
+  lat?:number;
+  long?:number;
 }
 
 export const Homes: Home[] = [
@@ -48,7 +50,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 19318006,
-    "width": 4096
+    "width": 4096,
+    "lat":28.613939,
+    "long":28.613939,
   },
   {
     "address": "456 Oak Ave, Sometown, USA",
@@ -62,7 +66,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1556020685-ae41abfc9365?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 33736765,
-    "width": 3902
+    "width": 3902,
+    "lat":28.459497,
+    "long":77.026634,
   },
   {
     "address": "789 Pine Rd, Yourtown, USA",
@@ -76,7 +82,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1592595896551-12b371d546d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 8514604,
-    "width": 5472
+    "width": 5472,
+    "lat":28.413446,
+    "long":77.106486
   },
   {
     "address": "101 Maple St, Anytown, USA",
@@ -90,7 +98,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1519642918688-7e43b19245d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 9662600,
-    "width": 4928
+    "width": 4928,
+    "lat":37.785834, 
+    "long":-122.406417
   },
   {
     "address": "202 Elm St, Sometown, USA",
@@ -121,7 +131,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1540551079-b1236c0cd8ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 7678204,
-    "width": 4430
+    "width": 4430,
+    "lat":37.785823, 
+    "long":-122.406445
   },
   {
     "address": "303 Oakwood Dr, Yourtown, USA",
@@ -135,7 +147,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1587433701752-78cbf88ae429?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 2432678,
-    "width": 6016
+    "width": 6016,
+    "lat":37.675823, 
+    "long":-121.406445
   },
   {
     "address": "404 Cedar Ln, Anytown, USA",
@@ -166,7 +180,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1533757114113-3e1d3e9d766c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 2593754,
-    "width": 4876
+    "width": 4876,
+    "lat":35.675823, 
+    "long":-121.406445
   },
   {
     "address": "505 Maple Ave, Sometown, USA",
@@ -180,7 +196,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1586024486164-ce9b3d87e09f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 3876863,
-    "width": 3358
+    "width": 3358,
+    "lat":36.675823, 
+    "long":-122.406445
   },
   {
     "address": "606 Pine St, Yourtown, USA",
@@ -273,7 +291,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 71055502,
-    "width": 3500
+    "width": 3500,
+    "lat":36.675823, 
+    "long":-122.406445
   },
   {
     "address": "909 Birchwood Dr, Yourtown, USA",
@@ -349,7 +369,9 @@ export const Homes: Home[] = [
     "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MjU4MjZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTkyMjgxNTN8&ixlib=rb-4.0.3&q=80&w=1080",
     "unlocked": false,
     "views": 25725439,
-    "width": 5760
+    "width": 5760,
+    "lat":35.675823, 
+    "long":-122.406445
   },
   {
     "address": "1212 Maple Rd, Yourtown, USA",

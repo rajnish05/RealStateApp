@@ -12,23 +12,29 @@ export default useLocation = () => {
 
   const { handlePermissionRequest } = usePermissions([PERMISSIONS.IOS.LOCATION_WHEN_IN_USE]);
 
+  // Destructuring the getLocation function from useGeoLocation hook
   const { getLocation } = useGeoLocation({
+    // Callback to execute when location data is successfully fetched
     onLocationFetch: ({ longitude, latitude }) => {
       setLocation({
         longitude,
         latitude,
       });
     },
+    // Callback to execute when an error occurs during location fetching
     onError: error => { },
   });
 
   React.useEffect(() => {
     (async function () {
+      // Await the result of the permission request
       const isGranted = await handlePermissionRequest();
       if (isGranted) {
+        // If permission is granted, get the user's location
         getLocation();
       } else {
-        // ! no permission handler
+        // If permission is not granted, handle the lack of permission
+        // Set the location to null
         setLocation({ latitude: null, longitude: null })
       }
     })();
