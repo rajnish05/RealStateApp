@@ -4,6 +4,7 @@ import { styles } from './style';
 import { BreadcrumbsProps } from './interface';
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs = [] }) => {
+     if(!breadcrumbs.length)return <></>
      return (
         <View style={styles.breadcrumbs}>
             {breadcrumbs.map((item, index) => (

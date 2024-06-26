@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import Toaster from '../component/ToastNotifier/Toaster';
 
 /** 
  * @author Rajnish kumar
@@ -15,7 +16,7 @@ export const signInWithEmailAndPassword = async (email: string, password: string
     if (["auth/user-not-found", "auth/invalid-credential"].includes(error.code)) {
       return registerUser(email, password)
     } else if (error.code === 'auth/wrong-password') {
-      throw new Error('Incorrect password');
+      return Toaster.error("Incorrect password")
     } else {
       throw error;
     }
@@ -33,7 +34,8 @@ const registerUser = async (email: string, password: string) => {
     const userCredential = await auth().createUserWithEmailAndPassword(email, password);
     return userCredential.user;
   } catch (error) {
-    throw error;
+    return Toaster.error("Unable to create user. Please try again later")
+
   }
 };
 
@@ -46,7 +48,7 @@ export const logOutuser = async () => {
   try {
     await auth().signOut();
   } catch (error) {
-    throw error;
+    return Toaster.error("Something went wrong. Please try again later")
   }
 }
 
@@ -58,7 +60,7 @@ export const currentUser = () => {
   try {
     return auth().currentUser;
   } catch (error) {
-    throw error;
+    return Toaster.error("Something went wrong. Please try again later")
   }
 }
 

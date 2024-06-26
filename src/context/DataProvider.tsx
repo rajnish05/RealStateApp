@@ -3,7 +3,7 @@ import fetchHomeList from '../utils/fetchHomeList';
 import { Home } from '../utils/Home';
 import fetchHomeDetails from '../utils/fetchHomeDetails';
 import { DataContextProps } from './interface';
-
+import Toaster from '../component/ToastNotifier/Toaster';
 
 const DataContext = createContext<DataContextProps | undefined>(undefined);
 
@@ -13,7 +13,7 @@ const DataContext = createContext<DataContextProps | undefined>(undefined);
 export const useDataContext = () => {
   const context = useContext(DataContext);
   if (!context) {
-    console.log("useDataContext must be used within a DataProvider", context)
+    Toaster.warning("context must be used within a DataProvider")
   }
   return context;
 };
@@ -33,13 +33,14 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       try {
         const response = await fetchHomeList('/api/homes');
         if (response.ok) {
+          Toaster.success(`Data fetched successfully`)
           const jsonData: Home[] | any = await response.json();
           setData(jsonData);
         } else {
-          console.error('Error fetching data:', response.status);
+          Toaster.error(`Error fetching data ${response.status}`)
         }
       } catch (error) {
-        console.error('Fetch error:', error);
+        Toaster.error(`Fetch error`)
       }
     };
     fetchData();
@@ -58,10 +59,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
           const jsonData: Home[] | any = await response.json();
           setHomeDetail(jsonData);
         } else {
-          console.error('Error fetching data:', response.status);
+          Toaster.error(`Error fetching data ${response.status}`)
         }
       } catch (error) {
-        console.error('Fetch error:', error);
+        Toaster.error(`Fetch error`)
       }
     };
     fetchHomeDetail();

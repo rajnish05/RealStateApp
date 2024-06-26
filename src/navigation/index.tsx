@@ -5,7 +5,7 @@ import AuthStack from './AuthStack';
 import AppStack from './Appstack';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { DataProvider } from '../context/DataProvider';
-
+import ToastNotifier from '../component/ToastNotifier';
 
 const NavigationStructue = () => {
 
@@ -30,6 +30,7 @@ const NavigationStructue = () => {
     <DataProvider>
       <NavigationContainer ref={navigationRef}>
         {Boolean(user) ? <AppStack /> : <AuthStack />}
+      <ToastNotifier />
       </NavigationContainer>
     </DataProvider>
   );

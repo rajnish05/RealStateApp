@@ -14,7 +14,7 @@ const Description: React.FC<HomeDescriptionProps> = ({ home, unlocked}) => {
 
     return (
         <View style={styles.descriptionContainer}>
-            <Text style={styles.price}>${home.price.toLocaleString()}</Text>
+            <Text style={styles.price}>{home.price.toLocaleString()}</Text>
             <View style={styles.detailsContainer}>
                 <Text style={styles.detail}>Bedrooms: {home.bedrooms}</Text>
                 <Text style={styles.detail}>Bathrooms: {home.bathrooms}</Text>

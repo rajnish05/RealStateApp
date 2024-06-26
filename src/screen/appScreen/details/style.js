@@ -28,12 +28,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 5,
+    marginHorizontal:10,
     backgroundColor: '#e0e0e0',
+    overflow:'hidden'
   },
   breadcrumb: {
     marginHorizontal: 5,
     color: '#333',
     textDecorationLine: 'underline',
+    fontSize:11
   },
   unlockButtonContainer: {
     padding: 20,
